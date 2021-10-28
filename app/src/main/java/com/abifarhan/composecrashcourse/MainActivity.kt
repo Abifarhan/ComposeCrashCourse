@@ -25,11 +25,16 @@ class MainActivity : ComponentActivity() {
 
 }
 
-
 @Composable
 fun Title() {
     Text(
         text = "Abi Jetpack Compose", fontSize = 32.sp,
         color = colorResource(id = R.color.purple_700)
     )
+}
+
+@Preview(showBackground = true)
+@Composable
+fun DefaultPreview() {
+    Title()
 }
