@@ -5,9 +5,7 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.fillMaxHeight
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -25,7 +23,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent{
-            Title()
+//            Title()
         }
     }
 
@@ -33,22 +31,32 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Title() {
-    val context = LocalContext.current
-    Text(
-        text = "Abi Jetpack Compose", fontSize = 32.sp,
-        fontFamily = FontFamily.Cursive,
-        color = colorResource(id = R.color.purple_700),
-        modifier = Modifier.clickable {
-            Toast.makeText(context, "Anda klik", Toast.LENGTH_SHORT).show()
-        }
-    )
-}
+fun UserCard() {
+    Row() {
+        
+    }
 
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    androidx.compose.material.Surface(Modifier.fillMaxSize()) {
-        Title()
+    Column {
+
     }
 }
+//@Composable
+//fun Title() {
+//    val context = LocalContext.current
+//    Text(
+//        text = "Abi Jetpack Compose", fontSize = 32.sp,
+//        fontFamily = FontFamily.Cursive,
+//        color = colorResource(id = R.color.purple_700),
+//        modifier = Modifier.clickable {
+//            Toast.makeText(context, "Anda klik", Toast.LENGTH_SHORT).show()
+//        }
+//    )
+//}
+//
+//@Preview(showBackground = true)
+//@Composable
+//fun DefaultPreview() {
+//    androidx.compose.material.Surface(Modifier.fillMaxSize()) {
+//        Title()
+//    }
+//}
