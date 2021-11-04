@@ -1,6 +1,7 @@
 package com.abifarhan.composecrashcourse
 
 import android.os.Bundle
+import android.widget.Space
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -58,6 +59,8 @@ fun MessageCard(msg: Message) {
 
         Column {
             Text(text = msg.author)
+//            Add a vertical space between the author adnd message texts
+            Spacer(modifier = Modifier.height(4.dp))
             Text(text = msg.body)
         }
     }
