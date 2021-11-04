@@ -39,8 +39,10 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MessageCard(msg: Message) {
-    Text(text = msg.author)
-    Text(text = msg.body)
+    Column {
+        Text(text = msg.author)
+        Text(text = msg.body)
+    }
 }
 
 @Preview
