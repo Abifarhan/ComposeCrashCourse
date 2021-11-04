@@ -16,7 +16,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -66,7 +66,13 @@ fun MessageCard(msg: Message) {
 
         Spacer(modifier = Modifier.width(8.dp))
 
-        Column {
+//        We keep track if the message is expanded or not in this
+//        variable
+        var isExpanded by remember{
+            mutableStateOf(false)
+        }
+//        We toggle the isExpanded variable when we click on this Columns
+        Column(modifier = Modifier.clickable { isExpanded = !isExpanded }) {
             Text(text = msg.author,
             color = MaterialTheme.colors.secondaryVariant,
             style = MaterialTheme.typography.subtitle2)
@@ -77,6 +83,9 @@ fun MessageCard(msg: Message) {
             androidx.compose.material.Surface(shape = MaterialTheme.shapes.medium, elevation = 1.dp) {
                 Text(text = msg.body,
                     modifier = Modifier.padding(all = 4.dp),
+//                    If the message is expanded, we display all its content
+//                    otherwise we only display the first line
+                    maxLines = if (isExpanded) Int.MAX_VALUE else 1,
                     style = MaterialTheme.typography.body2)
             }
         }
