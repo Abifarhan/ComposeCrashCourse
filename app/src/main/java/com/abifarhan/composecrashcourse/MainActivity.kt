@@ -39,10 +39,16 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun MessageCard(msg: Message) {
-    Column {
-        Text(text = msg.author)
-        Text(text = msg.body)
+    Row {
+       Image(
+           painter = painterResource(id = R.drawable.stawberry),
+           contentDescription = "Contact profile picture")
+        Column {
+            Text(text = msg.author)
+            Text(text = msg.body)
+        }
     }
+
 }
 
 @Preview
