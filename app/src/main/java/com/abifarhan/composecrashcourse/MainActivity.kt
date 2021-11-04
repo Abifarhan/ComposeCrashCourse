@@ -10,6 +10,8 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -31,7 +33,11 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent{
-            MessageCard(Message("Abi","Farhan"))
+//            MessageCard(Message("Abi","Farhan"))
+
+            ComposeCrashCourseTheme {
+                Conversation(SampleData.conversationSample)
+            }
         }
     }
 
@@ -88,9 +94,12 @@ fun PreviewMessageCard() {
 //    ComposeTutorialTheme{
 //
 //    }
-    MessageCard(
-        msg = Message("Colleague","Hey, take a look at Jetpack Compose, it's great")
-    )
+    ComposeCrashCourseTheme {
+        Conversation(SampleData.conversationSample)
+    }
+//    MessageCard(
+//        msg = Message("Colleague","Hey, take a look at Jetpack Compose, it's great")
+//    )
 }
 
 //adding  multiple text
@@ -98,6 +107,14 @@ fun PreviewMessageCard() {
 data class Message(val author: String, val body: String)
 
 
+@Composable
+fun Conversation(messages: List<Message>) {
+    LazyColumn() {
+        items(messages) { message ->
+            MessageCard(msg = message)
+        }
+    }
+}
 //@Composable
 //fun UserCard() {
 //    Row() {
