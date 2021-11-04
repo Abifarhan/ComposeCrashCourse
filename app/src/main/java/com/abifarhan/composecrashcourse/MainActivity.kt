@@ -25,7 +25,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent{
-            Text("Hello World")
+            MessageCard(name = "Abi Farhan")
         }
     }
 
@@ -33,15 +33,19 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun UserCard() {
-    Row() {
-        Image(painter = painterResource(id = R.drawable.stawberry), contentDescription = "the description")
-    }
-
-    Column {
-
-    }
+fun MessageCard(name: String) {
+    Text(text="Hello $name")
 }
+//@Composable
+//fun UserCard() {
+//    Row() {
+//        Image(painter = painterResource(id = R.drawable.stawberry), contentDescription = "the description")
+//    }
+//
+//    Column {
+//
+//    }
+//}
 //@Composable
 //fun Title() {
 //    val context = LocalContext.current
