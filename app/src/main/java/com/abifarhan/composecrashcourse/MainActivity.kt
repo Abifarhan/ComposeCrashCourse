@@ -6,6 +6,8 @@ import android.widget.Space
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.animation.animateColorAsState
+import androidx.compose.animation.animateContentSize
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -71,6 +73,9 @@ fun MessageCard(msg: Message) {
         var isExpanded by remember{
             mutableStateOf(false)
         }
+        val surfaceColor: Color by animateColorAsState(
+            if (isExpanded) MaterialTheme.colors.primary else MaterialTheme.colors.surface,
+        )
 //        We toggle the isExpanded variable when we click on this Columns
         Column(modifier = Modifier.clickable { isExpanded = !isExpanded }) {
             Text(text = msg.author,
@@ -80,7 +85,13 @@ fun MessageCard(msg: Message) {
 //            Add a vertical space between the author adnd message texts
             Spacer(modifier = Modifier.height(4.dp))
 
-            androidx.compose.material.Surface(shape = MaterialTheme.shapes.medium, elevation = 1.dp) {
+            androidx.compose.material.Surface(
+                shape = MaterialTheme.shapes.medium,
+                elevation = 1.dp,
+//                surfaceColor color will be changing gradually from primary to surface
+            color = surfaceColor,
+                modifier = Modifier.animateContentSize().padding(1.dp)
+            ) {
                 Text(text = msg.body,
                     modifier = Modifier.padding(all = 4.dp),
 //                    If the message is expanded, we display all its content
