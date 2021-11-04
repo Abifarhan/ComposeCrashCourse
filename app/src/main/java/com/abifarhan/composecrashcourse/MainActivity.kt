@@ -1,5 +1,6 @@
 package com.abifarhan.composecrashcourse
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.Space
 import android.widget.Toast
@@ -77,7 +78,11 @@ fun MessageCard(msg: Message) {
 
 }
 
-@Preview
+@Preview(
+    uiMode = Configuration.UI_MODE_NIGHT_YES,
+    showBackground = true,
+    name = "Dark Mode"
+)
 @Composable
 fun PreviewMessageCard() {
 //    ComposeTutorialTheme{
