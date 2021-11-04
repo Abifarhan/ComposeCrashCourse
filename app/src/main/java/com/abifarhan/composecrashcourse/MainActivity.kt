@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
@@ -53,12 +54,14 @@ fun MessageCard(msg: Message) {
                .size(40.dp)
 //       Clip image
                .clip(CircleShape)
+               .border(1.5.dp, MaterialTheme.colors.secondary, CircleShape)
            )
 
         Spacer(modifier = Modifier.width(8.dp))
 
         Column {
-            Text(text = msg.author)
+            Text(text = msg.author,
+            color = MaterialTheme.colors.secondaryVariant)
 //            Add a vertical space between the author adnd message texts
             Spacer(modifier = Modifier.height(4.dp))
             Text(text = msg.body)
@@ -70,6 +73,9 @@ fun MessageCard(msg: Message) {
 @Preview
 @Composable
 fun PreviewMessageCard() {
+//    ComposeTutorialTheme{
+//
+//    }
     MessageCard(
         msg = Message("Colleague","Hey, take a look at Jetpack Compose, it's great")
     )
